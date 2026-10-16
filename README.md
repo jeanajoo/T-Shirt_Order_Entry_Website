@@ -1,6 +1,6 @@
 **ASP.NET Core MVC T-Shirt Order Entry System**
 
-A relational order processing and transactional e-commerce web application developed in C# using ASP.NET Core 8.0 MVC and Entity Framework Core. Built as part of the Management Information Systems (MIS 333K) curriculum at UT Austin.
+A relational order processing and transactional e-commerce web application developed in C# using ASP.NET Core 8.0 MVC and Entity Framework Core. 
 
 **Project Overview**
 
