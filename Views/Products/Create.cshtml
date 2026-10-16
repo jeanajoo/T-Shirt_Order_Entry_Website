@@ -1,0 +1,56 @@
+@model Joo_Jeana_HW5.Models.Product
+
+@{
+    ViewData["Title"] = "Create Product";
+}
+
+<h1>Create</h1>
+
+<h4>Product</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6"> 
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group mb-3">
+                <label asp-for="Name" class="control-label fw-bold"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Description" class="control-label fw-bold"></label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Price" class="control-label fw-bold"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="ProductType" class="control-label fw-bold"></label>
+                <select asp-for="ProductType" class="form-select" asp-items="Html.GetEnumSelectList<ProductType>()">
+                    <option value="">-- Select Product Type --</option>
+                </select>
+                <span asp-validation-for="ProductType" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="control-label fw-bold">Suppliers</label>
+                <p class="text-muted small">Hold down the Ctrl (Windows) or Command (Mac) button to select multiple options.</p>
+                <select name="SelectedSuppliers" class="form-select" multiple="multiple" asp-items="@ViewBag.AllSuppliers">
+                </select>
+                <span class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-4">
+                <input type="submit" value="Create Product" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>

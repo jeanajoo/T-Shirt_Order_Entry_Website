@@ -1,0 +1,78 @@
+@model Joo_Jeana_HW5.Models.Product
+
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProductType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProductType)
+        </dd>
+    </dl>
+</div>
+
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <hr />
+    <h5>Suppliers for this Product</h5>
+    
+    @if (Model.Suppliers != null && Model.Suppliers.Any())
+    {
+        <table class="table table-sm table-striped" style="max-width: 400px;">
+            <thead class="table-dark">
+                <tr>
+                    <th>Supplier Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Supplier supplier in Model.Suppliers)
+                {
+                    <tr>
+                        <td>@supplier.SupplierName</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No suppliers assigned to this product.</p>
+    }
+}
+
+<div class="mt-4">
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    {
+        <a asp-action="Edit" asp-route-id="@Model?.ProductID" class="btn btn-warning">Edit</a> <text>|</text>
+    }
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

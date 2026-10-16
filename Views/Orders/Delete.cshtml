@@ -1,0 +1,69 @@
+@model Joo_Jeana_HW5.Models.Order
+
+@{
+    ViewData["Title"] = "Delete Order";
+}
+
+<h1>Delete Order</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.OrderNumber)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.OrderNumber)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.User.Email)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.User.Email)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.OrderDate)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.OrderNotes)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.OrderNotes)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.OrderSubtotal)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.OrderSubtotal)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.SalesTax)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.SalesTax)
+        </dd>
+
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.OrderTotal)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.OrderTotal)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="OrderID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

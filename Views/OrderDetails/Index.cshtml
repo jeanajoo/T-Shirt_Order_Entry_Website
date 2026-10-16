@@ -1,0 +1,48 @@
+@model IEnumerable<Joo_Jeana_HW5.Models.OrderDetail>
+
+@{
+    ViewData["Title"] = "Order Items";
+}
+
+<h1>Order Items</h1>
+
+<p>
+    <a asp-controller="OrderDetails" asp-action="Create" asp-route-orderID="@ViewBag.OrderID" class="btn btn-primary">Add New Item</a>
+    <a asp-controller="Orders" asp-action="Index" asp-route-id="@ViewBag.OrderID" class="btn btn-secondary">Back to Order</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>@Html.DisplayNameFor(model => model.Quantity)</th>
+            <th>@Html.DisplayNameFor(model => model.ProductPrice)</th>
+            <th>@Html.DisplayNameFor(model => model.ExtendedPrice)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Any())
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Product.Name</td>
+                    <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
+                    <td>@Html.DisplayFor(modelItem => item.ProductPrice)</td>
+                    <td>@Html.DisplayFor(modelItem => item.ExtendedPrice)</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.OrderDetailID">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@item.OrderDetailID">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5">No items in this order.</td>
+            </tr>
+        }
+    </tbody>
+</table>

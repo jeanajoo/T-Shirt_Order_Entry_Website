@@ -1,0 +1,26 @@
+﻿@model IEnumerable<String>
+
+@{
+    ViewData["Title"] = "Error";
+}
+
+<h1 class="text-danger">Error</h1>
+<h2 class="text-danger">An error occurred while processing your request.</h2>
+
+<div class="alert alert-danger">
+    <ul>
+        @if (Model != null && Model.Any())
+        {
+            @foreach (String s in Model)
+            {
+                <li>@s</li>
+            }
+        }
+        else
+        {
+            <li>An unknown error occurred. Please try again.</li>
+        }
+    </ul>
+</div>
+
+<a asp-action="Index" asp-controller="Home" class="btn btn-secondary">Back to Home</a>

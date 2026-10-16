@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Welcome to Our T-Shirt Store, Longhorns!</h1>
+
+<div class="mt-4">
+    <!-- Products visible to everyone -->
+    <a asp-action="Index" asp-controller="Products" class="btn btn-info">Products</a>
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        if (User.IsInRole("Customer"))
+        {
+            <a asp-action="Index" asp-controller="Orders" class="btn btn-primary ml-2">My Orders</a>
+        }
+
+        if (User.IsInRole("Admin"))
+        {
+            <a asp-action="Index" asp-controller="Orders" class="btn btn-primary ml-2">All Orders</a>
+            <a asp-action="Index" asp-controller="Suppliers" class="btn btn-secondary ml-2">Suppliers</a>
+            <a asp-action="Index" asp-controller="RoleAdmin" class="btn btn-danger ml-2">Manage Users</a>
+        }
+    }
+</div>
